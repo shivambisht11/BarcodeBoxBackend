@@ -1,6 +1,6 @@
 # BarcodeBox — Backend API Documentation
 
-> **Base URL (Production):** `https://your-app.vercel.app`
+> **Base URL (Production):** `https://barcode-box-backend.vercel.app`
 > **Base URL (Local Dev):** `http://localhost:3000`
 
 ---
@@ -130,7 +130,7 @@ Content-Type: application/json
 
 ```json
 {
-  "url": "https://your-app.vercel.app/m/xK9mZp2A",
+  "url": "https://barcode-box-backend.vercel.app/m/xK9mZp2A",
   "slug": "xK9mZp2A"
 }
 ```
@@ -167,7 +167,7 @@ interface BarcodeBoxApi {
 val messageResponse = api.createMessage(
     CreateMessageRequest("Happy Birthday! 🎂")
 )
-// messageResponse.url = "https://your-app.vercel.app/m/xK9mZp2A"
+// messageResponse.url = "https://barcode-box-backend.vercel.app/m/xK9mZp2A"
 
 // Step 2: Generate QR for that URL
 val qrResponse = api.generateQr(
@@ -219,7 +219,7 @@ data class HealthResponse(val status: String, val timestamp: String)
 
 This is a **web page**, not a JSON API. When someone scans the Smart Text QR code:
 
-1. The QR code contains a URL like `https://your-app.vercel.app/m/xK9mZp2A`
+1. The QR code contains a URL like `https://barcode-box-backend.vercel.app/m/xK9mZp2A`
 2. Scanning opens this URL in the phone's browser
 3. The page displays the message text on a **beautiful purple gradient background** with smooth animations
 4. If the message has expired (30 days), it shows an "Expired" error page
@@ -237,8 +237,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-    // TODO: Replace with your Vercel deployment URL
-    private const val BASE_URL = "https://your-app.vercel.app/"
+    private const val BASE_URL = "https://barcode-box-backend.vercel.app/"
 
     val api: BarcodeBoxApi by lazy {
         Retrofit.Builder()
@@ -360,4 +359,3 @@ try {
 
 data class ErrorResponse(val error: String)
 ```
-n
