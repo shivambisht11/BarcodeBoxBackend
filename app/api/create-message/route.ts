@@ -3,9 +3,10 @@ import { generateSlug, storeMessage, isKvConfigured } from "@/lib/kv";
 
 export async function POST(request: NextRequest) {
   try {
-    if (!isKvConfigured()) {
+    const isDev = process.env.NODE_ENV === "development";
+    if (!isKvConfigured() && !isDev) {
       return NextResponse.json(
-        { error: "Smart Text feature is not configured. Please set up Vercel KV." },
+        { error: "Smart Text feature is not configured. Please set up Redis (REDIS_URL)." },
         { status: 503 }
       );
     }
