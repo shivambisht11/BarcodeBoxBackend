@@ -15,7 +15,7 @@ function readFallback(): Record<string, { value: string; expiry: number }> {
       const data = fs.readFileSync(FALLBACK_FILE, "utf-8");
       return JSON.parse(data);
     }
-  } catch (e) {
+  } catch {
     // Silently ignore or log locally
   }
   return {};
